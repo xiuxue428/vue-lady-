@@ -6,5 +6,5 @@ export const LoginApi = (params) => request.post(`${preUrl}/tokens`,params)
 //     username:this.ruleForm2.username,
 //     password:this.ruleForm2.pwd
 // }))
-
-
+//获取部门列表
+export const getDepartments = (params) => request.get(`${preUrl}/departments`,{params:params})
