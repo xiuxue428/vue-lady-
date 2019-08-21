@@ -16,6 +16,8 @@
 </template>
 
 <script>
+    import {LoginApi} from '@/request/api'
+    import qs from 'qs'
     export default {
         name: "Login",
         data(){
@@ -32,7 +34,28 @@
             }
         },
         methods:{
-            loginFn(){},
+            loginFn(){
+                this.$refs['ruleForm2'].validate(vali=>{
+                    if(vali){
+                        // console.log('成功');
+                        //跨越
+                        /*request.post('/api/coding/tokens',qs.stringify({
+                            username:this.ruleForm2.username,
+                            password:this.ruleForm2.pwd
+                        })).then((res=>{
+                            console.log(res);
+                        }))*/
+                        LoginApi(qs.stringify({
+                            username:this.ruleForm2.username,
+                            password:this.ruleForm2.pwd
+                        })).then((res=>{
+                            console.log(res);
+                        }))
+                    }else {
+                        return false
+                    }
+                })
+            },
         }
     }
 </script>
